@@ -2,31 +2,27 @@ import turtle
 from turtle import Screen
 from states import States
 
-screen = Screen()
-screen.title("U.S State Game")
 image = "blank_states_img.gif"
-screen.addshape(image)
+score = 0
+guessStates = []
 
+screen = Screen()
+screen.addshape(image)
+screen.title("US State Game")
+
+states = States()
 turtle.shape(image)
 
-guess_states = []
-states = States()
-
-
-# def get_mouse_click_coor(x, y):
-#     print(x, y)
-
-# turtle.onscreenclick(get_mouse_click_coor)
-# turtle.mainloop()
-
-while len(guess_states) < 50:
-    text = screen.textinput(title=f"{states.score}/50 States Correct", prompt="What is state name?").title()
+while len(guessStates) < 50:
+    text = screen.textinput(title=f"{score}/50 States Correct", prompt="What is state name?").title()
     if text == "Exit":
-        missing_states = []
+        missingStates = []
         for state in states.data_list:
-            if state not in guess_states:
-                missing_states.append(state)
-        states.save_to_csv(missing_states)
+            if state not in guessStates:
+                missingStates.append(state)
+        states.save_to_csv(missingStates)
         break
-    if text not in guess_states:
-        guess_states.append(states.user_import(text))
+    elif text not in guessStates:
+        score += 1
+        states.import_state(text)
+        guessStates.append(text)
