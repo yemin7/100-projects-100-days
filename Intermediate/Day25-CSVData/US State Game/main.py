@@ -16,10 +16,7 @@ turtle.shape(image)
 while len(guessStates) < 50:
     text = screen.textinput(title=f"{score}/50 States Correct", prompt="What is state name?").title()
     if text == "Exit":
-        missingStates = []
-        for state in states.data_list:
-            if state not in guessStates:
-                missingStates.append(state)
+        missingStates = [state for state in states.data_list if state not in guessStates] #List Comprehension
         states.save_to_csv(missingStates)
         break
     elif text not in guessStates:
