@@ -76,8 +76,8 @@ def count_down(count):
 # ---------------------------- UI SETUP ------------------------------- #
 
 screen = Tk()
-screen_width = screen.winfo_screenwidth()
-screen_height = screen.winfo_screenheight()
+# screen_width = screen.winfo_screenwidth()
+# screen_height = screen.winfo_screenheight()
 screen.title("Pomodoro")
 screen.config(padx=100, pady=50, bg=YELLOW)
 
