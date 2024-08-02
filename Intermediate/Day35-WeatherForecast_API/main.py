@@ -1,6 +1,7 @@
 import requests
 from twilio.rest import Client
 
+# BKK
 LATITUDE = 13.756331
 LONGITUDE = 100.501762
 
